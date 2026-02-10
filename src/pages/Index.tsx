@@ -15,13 +15,21 @@ const FloatingHeart = ({ delay, left }: { delay: number; left: string }) => (
   </div>
 );
 
-const Envelope = ({ onClick, opened }: { onClick: () => void; opened: boolean }) => (
+const Envelope = ({
+  onClick,
+  opened,
+}: {
+  onClick: () => void;
+  opened: boolean;
+}) => (
   <div className="relative cursor-pointer group" onClick={onClick}>
     {/* Envelope body */}
     <div className="w-72 h-48 sm:w-96 sm:h-56 bg-secondary rounded-lg border border-border relative overflow-visible shadow-[0_0_40px_hsl(var(--primary)/0.2)]">
       {/* Inner card peek */}
       <div className="absolute inset-4 bg-card rounded border border-border flex items-center justify-center">
-        <p className="font-script text-2xl sm:text-3xl text-primary">Open me 💌</p>
+        <p className="font-script text-2xl sm:text-3xl text-primary">
+          Open me 💌
+        </p>
       </div>
 
       {/* Bottom flap */}
@@ -62,14 +70,16 @@ const Envelope = ({ onClick, opened }: { onClick: () => void; opened: boolean })
 const PhotoPlaceholder = ({ label }: { label: string }) => (
   <div className="w-40 h-52 sm:w-48 sm:h-60 bg-secondary border-2 border-dashed border-border rounded-lg flex flex-col items-center justify-center gap-3 hover:border-primary/50 transition-colors duration-300 rotate-[-2deg] hover:rotate-0 shadow-lg">
     <Heart className="w-8 h-8 text-muted-foreground" />
-    <span className="text-sm text-muted-foreground text-center px-2">{label}</span>
+    <span className="text-sm text-muted-foreground text-center px-2">
+      {label}
+    </span>
   </div>
 );
 
 const LoveLetter = () => (
   <div className="max-w-lg mx-auto text-center space-y-6 px-4">
     <h2 className="font-script text-5xl sm:text-7xl text-primary animate-fade-in-up">
-      Canilla
+      Camilla
     </h2>
 
     <div className="animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
@@ -80,8 +90,8 @@ const LoveLetter = () => (
       className="text-lg sm:text-xl text-foreground/90 leading-relaxed animate-fade-in-up"
       style={{ animationDelay: "0.6s" }}
     >
-      Every moment with you feels like a dream I never want to wake up from.
-      You make my world brighter, my heart fuller, and my life complete.
+     I wouldn’t be who I am today without you, you’ve given me strength, joy, and a home in your heart.
+I love you more than words can ever say, and I want to spend every Valentine’s Day, every day, forever with you.
     </p>
 
     <p
@@ -92,13 +102,23 @@ const LoveLetter = () => (
     </p>
 
     {/* Photo section */}
-    <div
-      className="flex flex-wrap justify-center gap-6 pt-8 animate-fade-in-up"
-      style={{ animationDelay: "1.2s" }}
-    >
-      <PhotoPlaceholder label="Our photo here" />
-      <PhotoPlaceholder label="Another memory" />
-    </div>
+  <div className="flex gap-4">
+  <div className="w-64 h-64 rounded-xl shadow-lg overflow-hidden">
+    <img
+      src="/images/photo 1.jpeg"
+      alt="Our photo"
+      className="w-full h-full object-cover"
+    />
+  </div>
+
+  <div className="w-64 h-64 rounded-xl shadow-lg overflow-hidden">
+    <img
+      src="/images/photo 2.jpeg"
+      alt="Another memory"
+      className="w-full h-full object-cover"
+    />
+  </div>
+</div>
 
     <p
       className="text-muted-foreground text-sm pt-6 animate-fade-in-up"
@@ -112,7 +132,9 @@ const LoveLetter = () => (
 const Index = () => {
   const [opened, setOpened] = useState(false);
   const [showLetter, setShowLetter] = useState(false);
-  const [hearts, setHearts] = useState<{ id: number; delay: number; left: string }[]>([]);
+  const [hearts, setHearts] = useState<
+    { id: number; delay: number; left: string }[]
+  >([]);
 
   const handleOpen = () => {
     if (opened) return;
